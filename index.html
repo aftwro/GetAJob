@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            z-index: -1;
+            transition: transform 0.5s linear;
+            pointer-events: none;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .text-container {
+            text-align: center;
+            width: 90vw;
+            z-index: 1;
+        }
+
+        .message {
+            font-family: 'UnifrakturMaguntia', cursive;
+            white-space: nowrap;
+            color: #333;
+            line-height: 1;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtext-container {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-family: 'Smooch Sans', sans-serif;
+            color: #666;
+            z-index: 1;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subtext {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 16px;
+            color: #999;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .message { font-size: 8vw; }
+            .subtext { font-size: 16px; }
+        }
+        @media (min-width: 481px) and (max-width: 1024px) {
+            .message { font-size: 12vw; }
+        }
+        @media (min-width: 1025px) {
+            .message { font-size: 15vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="text-container">
+            <div class="message">GET A JOB</div>
+        </div>
+    </div>
+    <div class="subtext-container">
+        <div class="subtext">"I'm not sorry that I wasted your time"</div>
+        <div class="subtext">"I'm not down to play with scams"</div>
+        <div class="subtext">"Maybe try getting a job? I can offer you a job too.."</div>
+        <div class="subtext">"If you're really struggling you shouldn't be messaging others<br>about your fake online business, or AI generated 'art'"</div>
+        <div class="subtext">"In the end, I'm also struggling financially and physically, so we have that in common.."</div>
+        <div class="subtext">"It's not hard to get a job"</div>
+        <div class="date">* aftWr 19-1-2025</div>
+    </div>
+
+    <script>
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.textContent = 'Get Fucked, and maybe Get a Job! 🖕';
+            
+            // Random starting position
+            emoji.style.left = Math.random() * window.innerWidth + 'px';
+            emoji.style.top = Math.random() * window.innerHeight + 'px';
+            
+            document.body.appendChild(emoji);
+
+            // Random movement animation
+            function animate() {
+                const newX = Math.random() * window.innerWidth;
+                const newY = Math.random() * window.innerHeight;
+                const rotation = Math.random() * 360;
+                const scale = 0.5 + Math.random() * 1.5;
+                
+                emoji.style.transform = `translate(${newX}px, ${newY}px) rotate(${rotation}deg) scale(${scale})`;
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Create new emoji every 500ms
+        setInterval(createEmoji, 500);
+
+        // Initial emojis
+        for(let i = 0; i < 5; i++) {
+            createEmoji();
+        }
+    </script>
+</body>
+</html>
